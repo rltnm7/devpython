@@ -1,19 +1,15 @@
 {
     // Docker Composeファイル
     "dockerComposeFile": "docker-compose.yml",
-    
     // ログインするコンテナの指定
     // docker-compose.ymlのサービス名を指定する
     "service": "app",
-
     // ログイン時の初期ディレクトリ
     // VSCodeで開くディレクトリになる
     "workspaceFolder": "/devpython",
-
     // リモート接続を切断したときの動作
     // Windowsだと何故か落ちない...
     "shutdownAction": "stopCompose",
-
     // リモート接続先で有効化するVSCode拡張機能
     // 拡張機能のDetails画面右ペイン最下部に記載されているIdentifierを指定する
     "extensions": [
@@ -21,12 +17,15 @@
         "ms-python.python",
         // Pylance
         "ms-python.vscode-pylance",
+        // Python Indent
+        "kevinrose.vsc-python-indent",
+        // Python Docstring Generator
+        "njpwerner.autodocstring",
         // SonarLint
         "sonarsource.sonarlint-vscode",
         // YAML
         "redhat.vscode-yaml"
     ],
-
     // リモート接続先で上書きする基本設定 (settings.json)
     "settings": {
         "python.condaPath": "/usr/local/bin/python",
