@@ -17,26 +17,3 @@ class UserResponse:
         """
         self.id = id
         self.username = username
-
-    def __eq__(self, other):
-        """
-        ==演算子
-
-        Parameters
-        ----------
-        other : UserResponse
-            比較対象
-
-        Returns
-        -------
-        bool
-            比較結果
-        """
-
-        if self.id != other.id:
-            return False
-
-        if self.username != other.username:
-            return False
-
-        return True

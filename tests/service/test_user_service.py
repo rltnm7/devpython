@@ -1,13 +1,13 @@
+from tests.util import eq_users
+from entity import User
+from service import UserService
+from repository import UserRepository
+from dateutil.relativedelta import relativedelta
+import datetime
+import freezegun
 import sys
 sys.path.append("src")
 
-import freezegun
-import datetime
-from dateutil.relativedelta import relativedelta
-
-from repository import UserRepository
-from service import UserService
-from entity import User
 
 class TestUserRepository:
 
@@ -34,31 +34,32 @@ class TestUserRepository:
     def test_find_all(self, mocker):
         mocker.patch.object(UserRepository, "find_all", return_value=[
             User(id=1, username='nana-mizuki', name='Nana Mizuki',
-                birthday=datetime.date(1980, 1, 21)),
+                 birthday=datetime.date(1980, 1, 21)),
             User(id=2, username='maaya-uchida', name='Maaya Uchida',
-                birthday=datetime.date(1989, 12, 27))
+                 birthday=datetime.date(1989, 12, 27))
         ])
 
-        acctual = []
-        acctual.append(User(id=1, username='nana-mizuki', name='Nana Mizuki',
-            birthday=datetime.date(1980, 1, 21), age=42))
-        acctual.append(User(id=2, username='maaya-uchida', name='Maaya Uchida',
-            birthday=datetime.date(1989, 12, 27), age=32))
+        acctuals = []
+        acctuals.append(User(id=1, username='nana-mizuki', name='Nana Mizuki',
+                             birthday=datetime.date(1980, 1, 21), age=42))
+        acctuals.append(User(id=2, username='maaya-uchida', name='Maaya Uchida',
+                             birthday=datetime.date(1989, 12, 27), age=32))
 
         results = self.service.find_all()
-        
-        assert results == acctual
+
+        for result, acctual in zip(results, acctuals):
+            assert eq_users(result, acctual)
 
     @freezegun.freeze_time("2022-01-21")
     def test_find_by_username(self, mocker):
         mocker.patch.object(UserRepository, "find_by_username",
-            return_value=User(id=1, username='nana-mizuki', name='Nana Mizuki',
-                birthday=datetime.date(1980, 1, 21))
-        )
+                            return_value=User(id=1, username='nana-mizuki', name='Nana Mizuki',
+                                              birthday=datetime.date(1980, 1, 21))
+                            )
 
         acctual = User(id=1, username='nana-mizuki', name='Nana Mizuki',
-            birthday=datetime.date(1980, 1, 21), age=42)
+                       birthday=datetime.date(1980, 1, 21), age=42)
 
         result = self.service.find_by_username('nana-mizuki')
 
-        assert result.__eq__(acctual)
+        assert eq_users(result, acctual)
