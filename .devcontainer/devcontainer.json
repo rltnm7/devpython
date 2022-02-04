@@ -13,6 +13,10 @@
     // リモート接続先で有効化するVSCode拡張機能
     // 拡張機能のDetails画面右ペイン最下部に記載されているIdentifierを指定する
     "extensions": [
+        // Japanese Language Pack for Visual Studio Code
+        "ms-ceintl.vscode-language-pack-ja",
+        // Visual Studio IntelliCode
+        "visualstudioexptteam.vscodeintellicode",
         // Python
         "ms-python.python",
         // Pylance
