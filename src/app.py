@@ -5,23 +5,49 @@ from service import UserService
 
 service = UserService()
 
+
 @app.route('/users')
 def list_users():
+    """
+    ユーザ一覧ページ表示
+
+    Returns
+    -------
+    str
+        ユーザ一覧ページ
+    """
     user_entities = service.find_all()
+
     user_responses = []
     for user_entity in user_entities:
-        user_response = UserResponse(id=user_entity.id, username=user_entity.username)
+        user_response = UserResponse(
+            id=user_entity.id, username=user_entity.username)
         user_responses.append(user_response)
 
     return render_template("users.html", users=user_responses)
 
+
 @app.route('/users/<username>')
 def get_user(username):
+    """
+    ユーザ詳細ページ表示
+
+    Parameters
+    ----------
+    username : str
+        ユーザ名
+
+    Returns
+    -------
+    str
+        ユーザ詳細ページ
+    """
     user_entity = service.find_by_username(username)
     user_response = UserDetailResponse(id=user_entity.id, username=user_entity.username,
-        name=user_entity.name, birthday=user_entity.birthday, age=user_entity.age)
+                                       name=user_entity.name, birthday=user_entity.birthday, age=user_entity.age)
 
     return render_template("user_detail.html", user=user_response)
+
 
 if __name__ == '__main__':
     app.run(host=host, port=port, debug=debug)

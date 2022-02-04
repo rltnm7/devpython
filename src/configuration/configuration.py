@@ -2,19 +2,25 @@ import json
 from flask import Flask
 from datasource import PostgreSQL
 
+# コンフィグファイル名
 CONFIG_FILENAME = "resources/config.json"
 
-# server
+# 接続許可IP
 host = None
+
+# server port
 port = None
 
 # application context
 app = None
+
+# debug mode flag
 debug = None
 
 # datasource for PostgreSQL
 datasource = None
 
+# コンフィグファイルから設定情報のインポート
 with open(CONFIG_FILENAME) as f:
     config = json.load(f)
 
