@@ -1,10 +1,11 @@
-from entity import User
-from service import UserService
-from app import app
-import datetime
 import sys
 sys.path.append("src")
 
+import datetime
+
+from entity import User
+from service import UserService
+from app import app
 
 class TestApp:
     TEMPLATE_DIRECTORY = "tests/templates/"
