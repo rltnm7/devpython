@@ -2,8 +2,8 @@ set client_encoding = 'UTF8';
 
 create table users (
   id serial primary key,
-  username varchar not null,
-  name varchar not null,
+  username varchar2(64) not null,
+  name varchar2(64) not null,
   birthday DATE not null
 );
 
