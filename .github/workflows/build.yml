@@ -34,8 +34,8 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run pytestmv
-        run: pytest -v --cov --cov-report=xml
-      - name: mv
+        run: pytest -v --cov src --cov-report xml
+      - name: Rename coverage report
         run: |
           mkdir coverage-reports
           mv coverage.xml coverage-reports/devpython-coverage-`date "%Y%m%d%%H%M%S"`.xml
