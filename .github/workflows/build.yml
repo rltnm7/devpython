@@ -33,12 +33,12 @@ jobs:
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       - name: Install requirements
         run: pip install -r requirements.txt
-      - name: Run pytestmv
+      - name: Run pytest
         run: pytest -v --cov src --cov-report xml
       - name: Rename coverage report
         run: |
           mkdir coverage-reports
-          mv coverage.xml coverage-reports/devpython-coverage-`date "%Y%m%d%%H%M%S"`.xml
+          mv coverage.xml coverage-reports/devpython-coverage-`date "%Y%m%d%H%M%S"`.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
