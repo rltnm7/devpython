@@ -1,9 +1,19 @@
+import os
 import json
 from flask import Flask
-from datasource import PostgreSQL
+
+profile = os.getenv("PYTHON_PROFILE", "default")
+
+if profile == "test":
+    from tests.datasource.mock_datasource import MockPostgreSQL as PostgreSQL
+else:
+    # ユニットテストでmockを挿し込む用の分岐のため、挿し込まない分岐はカバレッジが通せいない
+    from datasource import PostgreSQL
 
 # コンフィグファイル名
 CONFIG_FILENAME = "resources/config.json"
+if profile == "test":
+    CONFIG_FILENAME = "tests/resources/config.json"
 
 # 接続許可IP
 host = None

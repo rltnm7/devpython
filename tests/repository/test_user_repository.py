@@ -1,7 +1,7 @@
 from tests.util import eq_users
 from entity import User
 from repository import UserRepository
-from datasource import PostgreSQL
+from tests.datasource.mock_datasource import MockPostgreSQL as PostgreSQL
 import datetime
 import sys
 

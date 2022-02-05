@@ -1,1 +1,1 @@
-from configuration.configuration import host, port, app, debug, datasource
+from configuration.configuration import profile, host, port, app, debug, datasource
