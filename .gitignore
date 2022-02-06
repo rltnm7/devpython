@@ -154,3 +154,4 @@ cython_debug/
 # Custom
 db/data/
 .vscode
+.DS_Store
