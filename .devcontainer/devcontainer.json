@@ -13,8 +13,11 @@
     // リモート接続先で有効化するVSCode拡張機能
     // 拡張機能のDetails画面右ペイン最下部に記載されているIdentifierを指定する
     "extensions": [
+        // 環境設定
         // Japanese Language Pack for Visual Studio Code
         "ms-ceintl.vscode-language-pack-ja",
+
+        // Python開発
         // Visual Studio IntelliCode
         "visualstudioexptteam.vscodeintellicode",
         // Python
@@ -25,14 +28,65 @@
         "kevinrose.vsc-python-indent",
         // Python Docstring Generator
         "njpwerner.autodocstring",
+
+        // フォーマッタ関連
         // SonarLint
         "sonarsource.sonarlint-vscode",
         // YAML
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+
+        // git関連
+        // Git Graph
+        "mhutchie.git-graph",
+        // GitLens
+        "eamodio.gitlens",
+
+        // ドキュメンテーション
+        // Markdown All in One
+        "yzhang.markdown-all-in-one",
+        // Markdown Preview Enhanced
+        "shd101wyy.markdown-preview-enhanced",
+        // Draw.io Integration
+        "hediet.vscode-drawio"
+
     ],
     // リモート接続先で上書きする基本設定 (settings.json)
     "settings": {
+        // タブサイズ調整
+        "[python]": {
+            "editor.tabSize": 4,
+        },
+        "[json]": {
+            "editor.tabSize": 4,
+        },
+        "[yaml]": {
+            "editor.tabSize": 2,
+        },
+        "[markdown]": {
+            "editor.tabSize": 2,
+            "editor.wordWrap": "on",
+            "editor.quickSuggestions": false
+        },
+
+        // Python設定
         "python.condaPath": "/usr/local/bin/python",
-        "sonarlint.ls.javaHome": "/usr/lib/jvm/java-17-openjdk"
+        "python.languageServer": "Pylance",
+        "python.showStartPage": false,
+        "autoDocstring.docstringFormat": "numpy",
+        "autoDocstring.startOnNewLine": true,
+        "autoDocstring.guessTypes": true,
+    
+        // Formatter
+        "sonarlint.ls.javaHome": "/usr/lib/jvm/java-17-openjdk",
+        "sonarlint.connectedMode.project": {
+            "connectionId": "sonarcloud",       // 対応するsonarlint.connectedMode.connections.sonarcloudが必要
+            "projectKey": "rltnm7_devpython"
+        },
+
+        // GitHub Actions定義のエラー回避
+        "yaml.schemas": {
+            "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+        }    
+        
     }
 }
