@@ -6,6 +6,7 @@ on:
       - main
       - develop
     types: [opened, synchronize, reopened]
+    
 env:
   PYTHON_PROFILE: test
 
