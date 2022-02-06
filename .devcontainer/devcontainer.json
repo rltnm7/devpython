@@ -35,7 +35,11 @@
         // YAML
         "redhat.vscode-yaml",
 
-        // git関連
+       // 依存解析
+        // Dependency Analytics
+        "redhat.fabric8-analytics",
+
+         // git関連
         // Git Graph
         "mhutchie.git-graph",
         // GitLens
@@ -83,7 +87,10 @@
             "projectKey": "rltnm7_devpython"
         },
 
-        // GitHub Actions定義のエラー回避
+         // Dependency Analytics
+         "python.pythonPath": "/usr/local/bin/python",
+
+         // GitHub Actions定義のエラー回避
         "yaml.schemas": {
             "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
         }    
