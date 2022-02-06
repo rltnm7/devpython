@@ -1,4 +1,4 @@
-FROM python:3.9.0-alpine3.12
+FROM python:3.9.10-alpine3.15
 
 # git, openjdk (SonarLint用) とpytest関連モジュールをインストール
 RUN apk update \
