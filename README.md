@@ -101,7 +101,7 @@ apk --purge del .build-deps
 ルートディレクトリ上で以下コマンドを実行
 
 ```sh
-pytest --cov --cov-branch -v
+pytest -v --cache-clear --flake8 --html=htmlcov/test-report.html --cov=src --cov-report=html
 ```
 
 ### 実行
